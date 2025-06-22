@@ -5,5 +5,7 @@ import accountReducer from "./features/accounts/accountSlice";
 
  store.dispatch({type:"account/deposite",payload:1000})
  console.log(store.getState())
+ store.dispatch({type:"account/withdraw",payload:500})
+ console.log(store.getState())
 
 export default  store
