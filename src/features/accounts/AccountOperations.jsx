@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function AccountOperations() {
   const [depositAmount, setDepositAmount] = useState("");
@@ -7,6 +8,9 @@ function AccountOperations() {
   const [loanPurpose, setLoanPurpose] = useState("");
   const [currency, setCurrency] = useState("USD");
 
+  const account = useSelector((store)=>store.account)
+  const dispatch = useDispatch()
+  console.log(dispatch)
   function handleDeposit() {}
 
   function handleWithdrawal() {}
