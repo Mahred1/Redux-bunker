@@ -19,6 +19,13 @@ export default function accountReducer(state = initialState, action) {
         loanAmount: action.payload.amount,
         loanPurpouse: action.payload.purpouse,
       };
+    case "account/payLoan":
+        return{
+            ...state,
+            balance: state.balance - state.loanAmount,
+            loanAmount : 0,
+            loanPurpouse : ""
+        }
     default:
       return state;
   }
@@ -45,4 +52,10 @@ function requestLoan(amount,purpouse){
     }
 }
 
-export { deposite, withdraw,requestLoan };
+function payLoan(){
+    return {    
+        type:"account/payLoan"
+    }
+}
+
+export { deposite, withdraw,requestLoan,payLoan };
