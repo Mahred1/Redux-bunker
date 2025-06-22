@@ -1,7 +1,20 @@
-import { createStore } from "redux";
-import accountReducer, { payLoan, requestLoan } from "./features/accounts/accountSlice";
+import { combineReducers, createStore } from "redux";
+import accountReducer, {
+  deposite,
+  payLoan,
+  requestLoan,
+} from "./features/accounts/accountSlice";
+import { composeWithDevTools } from "redux-devtools-extension";
+import customerReducer, {
+  createAccount,
+} from "./features/customers/customerSlice";
 
- const store= createStore(accountReducer)
+const rootReducer = combineReducers({
+  account: accountReducer,
+  customer: customerReducer,
+});
+const store = createStore(rootReducer, composeWithDevTools());
 
-
-export default  store
+store.dispatch(createAccount("mahfuz redwan", "1234re"));
+console.log(store.getState());
+export default store;
